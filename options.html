@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>飞书文档收藏助手 - 配置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>飞书文档收藏助手 - 配置</h1>
+    
+    <div class="config-section">
+      <h2>配置</h2>
+      
+      <div class="form-group">
+        <label for="appId">App ID</label>
+        <input type="text" id="appId" placeholder="请输入飞书应用App ID">
+      </div>
+      
+      <div class="form-group">
+        <label for="appSecret">App Secret</label>
+        <input type="password" id="appSecret" placeholder="请输入飞书应用App Secret">
+      </div>
+      
+      <div class="form-group">
+        <label for="docUrl">文档 URL</label>
+        <input type="text" id="docUrl" placeholder="请输入飞书知识库文档URL">
+        <p class="help-text">例如：https://my.feishu.cn/wiki/UvfowWBeQiyJjIkpR91c3QgQn</p>
+      </div>
+      
+      <div class="form-group">
+        <label>重定向 URL</label>
+        <div class="redirect-url-container">
+          <input type="text" id="redirectUrl" readonly value="chrome-extension://[扩展ID]/oauth.html">
+          <button id="copyRedirectUrl" class="copy-button">复制</button>
+        </div>
+        <p class="help-text">在飞书开放平台的应用设置中，将此URL添加到重定向URL列表</p>
+      </div>
+      
+      <button id="saveConfig" class="btn-primary">保存配置</button>
+      <button id="authorizeFeishu" class="btn-secondary" style="margin-top: 12px; display: none;">飞书授权</button>
+    </div>
+    
+    <div class="status-section">
+      <h2>状态</h2>
+      <div id="statusMessage" class="status-message">
+        <p>请先配置飞书应用信息</p>
+      </div>
+    </div>
+    
+    <div class="help-section">
+      <h2>使用说明</h2>
+      <ol>
+        <li>在飞书开放平台创建企业自建应用</li>
+        <li>获取 App ID 和 App Secret</li>
+        <li>配置应用权限：docx:document、docx:document.content、wiki:space、wiki:node</li>
+        <li>创建或选择一个飞书知识库文档，获取文档 Token</li>
+        <li>在上方填写配置并保存</li>
+        <li>在网页中选中任意文本，点击收藏按钮即可</li>
+      </ol>
+      <a href="https://open.feishu.cn" target="_blank" class="help-link">前往飞书开放平台</a>
+    </div>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

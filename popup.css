@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: #f8fafc;
+  color: #334155;
+  width: 350px;
+  min-height: 300px;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 16px;
+}
+
+.status-section, .action-section, .help-section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #3370ff 0%, #1d5cf7 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(51, 112, 255, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.status-message {
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.status-message.configured {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.status-message.not-configured {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.help-section ol {
+  margin-left: 20px;
+  line-height: 1.8;
+  font-size: 14px;
+  color: #475569;
+}
+
+.help-section li {
+  margin-bottom: 8px;
+}
+
+.help-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #3370ff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.help-link:hover {
+  text-decoration: underline;
+}

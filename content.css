@@ -1,0 +1,400 @@
+#feishu-save-button {
+  position: absolute;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3370ff 0%, #1d5cf7 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(51, 112, 255, 0.3);
+  z-index: 2147483647;
+  transition: all 0.2s ease;
+}
+
+#feishu-save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(51, 112, 255, 0.4);
+}
+
+#feishu-save-button:active {
+  transform: translateY(0);
+}
+
+#feishu-save-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+#feishu-save-button.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.feishu-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  z-index: 2147483647;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  max-width: 550px;
+  min-width: 320px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* 自定义滚动条样式 */
+.feishu-message::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feishu-message::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.feishu-message::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.feishu-message::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.feishu-message.success {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.feishu-message.error {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.feishu-message .message-text {
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+  word-break: break-word;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.message-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  color: inherit;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.message-close:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.feishu-doc-link {
+  display: inline-block;
+  color: #3370ff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 4px;
+  padding: 6px 12px;
+  background: rgba(51, 112, 255, 0.08);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.feishu-doc-link:hover {
+  background: rgba(51, 112, 255, 0.15);
+  text-decoration: none;
+}
+
+.error-details {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.debug-info {
+  margin-bottom: 12px;
+}
+
+.debug-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 6px;
+}
+
+.debug-section.error-api {
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid #ef4444;
+}
+
+.debug-label {
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 8px;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.debug-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+.debug-value.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.api-call.failed {
+  border-left: 4px solid #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  padding-left: 8px;
+  border-radius: 0 6px 6px 0;
+}
+
+.api-status.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.api-calls {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+}
+
+.api-call {
+  margin-bottom: 12px;
+}
+
+.api-call:last-child {
+  margin-bottom: 0;
+}
+
+.api-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.api-method {
+  font-weight: 700;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #3370ff;
+  color: white;
+  text-transform: uppercase;
+}
+
+.api-url {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 11px;
+  color: inherit;
+  opacity: 0.8;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.api-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.api-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.api-request {
+  margin-bottom: 8px;
+}
+
+.api-request-content {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 150px;
+  overflow-y: auto;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.api-response-section {
+  margin-top: 8px;
+}
+
+.api-response {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 150px;
+  overflow-y: auto;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.full-json-section {
+  margin: 12px 0;
+}
+
+.full-json-toggle {
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.full-json-toggle:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.full-json-section[open] .full-json-toggle {
+  border-radius: 6px 6px 0 0;
+}
+
+.error-json {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 6px 6px;
+  padding: 12px;
+  font-size: 11px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.full-json-section:not([open]) .error-json {
+  display: none;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  background: linear-gradient(135deg, #3370ff 0%, #1d5cf7 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(51, 112, 255, 0.3);
+  margin-top: 12px;
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(51, 112, 255, 0.4);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+.copy-button.copied {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.copy-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.copy-text {
+  line-height: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
